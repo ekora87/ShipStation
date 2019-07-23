@@ -15,6 +15,19 @@ let baseDT = {
 let hddArray = ['160GB', '320GB', '500GB', '1TB'];
 
 let dt160GB = 0;
+let dt320GB = 0;
+let dt500GB = 0;
+let dt1TB = 0;
+let dt128GB = 0;
+let dt240GB = 0;
+let dt480GB = 0;
+let lt160GB = 0;
+let lt320GB = 0;
+let lt500GB = 0;
+let lt1TB = 0;
+let lt128GB = 0;
+let lt240GB = 0;
+let lt480GB = 0;
 
 //For date calendar
 $(document).ready(function () {
@@ -100,35 +113,111 @@ function getProducts(responseJson) {
           for (let y=0; y < order.items.length; y++) {
             let SKUs = order.items[y].sku;
             //console.log(order);
-            if ((SKUs.includes(laptops)) || (SKUs.includes(desktops))) {
+            if (SKUs.includes(desktops)) {
               
-              $('.options').append(`<h3>${order.orderNumber}</h3><p>${SKUs}</p>`);
-              displayOptions(order.items[0].options);
+              //$('.options').append(`<h3>${order.orderNumber}</h3><p>${SKUs}</p>`);
+              displayDTOptions(order.items[y].options);
+            } else {
+              if (SKUs.includes(laptops)) {
+              
+                //$('.options').append(`<h3>${order.orderNumber}</h3><p>${SKUs}</p>`);
+                displayLTOptions(order.items[y].options);
             }
           }
           //console.log(responseJson.orders[i])
     }
     
+    
+}
+addResults();
 }
 
-function displayOptions(item) {
+function displayDTOptions(item) {
   //console.log(item.length);
    for (let i=0; i<item.length; i++) {
      let upgradeName = item[i].name;
      let upgradeValue = item[i].value;
-     $('.options').append(`<p>${upgradeName}: ${upgradeValue}</p>`);
+     //$('.options').append(`<p>${upgradeName}: ${upgradeValue}</p>`);
 
-     if (item[i].value === '4GB') {
+     if (item[i])
+     if (item[i].value === '160GB') {
        dt160GB++;
-       alert("160GB");
-       console.log(dt160GB);
+       //alert("160GB");
+       //console.log(dt160GB);
      }
+
+     if (item[i].value === '320GB') {
+      dt320GB++;
+    }
+    if (item[i].value === '500GB') {
+      dt500GB++;
+    }
+    if (item[i].value === '1TB') {
+      dt1TB++;
+    }
+    if (item[i].value === '128GB SSD') {
+      dt128GB++;
+    }
+    if (item[i].value === '240GB SSD') {
+      dt240GB++;
+    }
+    if (item[i].value === '480GB SSD') {
+      dt480GB++;
+    }
+
+
    }
-   $('.results').append(`<p>DT HDD 160GB: ${dt160GB}`);
+   //$('.results').append(`<p>DT HDD 160GB: ${dt160GB}`);
 }
 
+function displayLTOptions(item) {
+  //console.log(item.length);
+   for (let i=0; i<item.length; i++) {
+     let upgradeName = item[i].name;
+     let upgradeValue = item[i].value;
+     //$('.options').append(`<p>${upgradeName}: ${upgradeValue}</p>`);
 
+     
+     if (item[i].value === '160GB') {
+       lt160GB++;
+       //alert("160GB");
+       //console.log(dt160GB);
+     }
+
+     if (item[i].value === '320GB') {
+      lt320GB++;
+    }
+    if (item[i].value === '500GB') {
+      lt500GB++;
+    }
+    if (item[i].value === '1TB') {
+      lt1TB++;
+    }
+    if (item[i].value === '128GB SSD') {
+      lt128GB++;
+    }
+    if (item[i].value === '240GB SSD') {
+      lt240GB++;
+    }
+    if (item[i].value === '480GB SSD') {
+      lt480GB++;
+    }
+
+
+   }
+   //$('.results').append(`<p>DT HDD 160GB: ${dt160GB}`);
+}
+
+function addResults() {
+  $('.results').append(`<p>DT HDD 160GB: ${dt160GB}</p><p>DT HDD 320GB: ${dt320GB}</p><p>DT HDD 500GB: ${dt500GB}</p><p>DT HDD 1TB: ${dt1TB}</p><p>DT HDD 128GB SSD: ${dt128GB}</p>
+  <p>DT HDD 240GB SSD: ${dt240GB}</p><p>DT HDD 480GB SSD: ${dt480GB}</p>`);
+
+  $('.results').append(`<p>LT HDD 160GB: ${lt160GB}</p><p>LT HDD 320GB: ${lt320GB}</p><p>LT HDD 500GB: ${lt500GB}</p><p>LT HDD 1TB: ${lt1TB}</p><p>LT HDD 128GB SSD: ${lt128GB}</p>
+  <p>LT HDD 240GB SSD: ${lt240GB}</p><p>LT HDD 480GB SSD: ${lt480GB}</p>`);
+  
+}
 
 $(function() {
     test();
+    //addResults();
 })
