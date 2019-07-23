@@ -1,6 +1,21 @@
 let apiKey = 'ZDI1NzRlMTE1NjEwNDM2ZDhmYWNjYWI4N2M4YzQ3YzI6ZDNjMjA0ZWE5YWJmNDAwYzk3Njk3NzVkODViNDk0NTE=';
 let url = 'https://ssapi.shipstation.com/orders?';
 
+let baseDT = {
+  memory: '4GB',
+  hdd: '160GB',
+  os: 'Win 7',
+  optical: 'none',
+  lcd: 'none',
+  kb: 'none',
+  wireless: 'none',
+  av: 'Leave Me Unprotected'
+}
+
+let hddArray = ['160GB', '320GB', '500GB', '1TB'];
+
+let dt160GB = 0;
+
 //For date calendar
 $(document).ready(function () {
     $('input[class$=tbdate]').datepicker({
@@ -99,12 +114,20 @@ function getProducts(responseJson) {
 function displayOptions(item) {
   //console.log(item.length);
    for (let i=0; i<item.length; i++) {
-     $('.options').append(`<p>${item[i].name}: ${item[i].value}</p>`);
+     let upgradeName = item[i].name;
+     let upgradeValue = item[i].value;
+     $('.options').append(`<p>${upgradeName}: ${upgradeValue}</p>`);
+
+     if (item[i].value === '4GB') {
+       dt160GB++;
+       alert("160GB");
+       console.log(dt160GB);
+     }
    }
+   $('.results').append(`<p>DT HDD 160GB: ${dt160GB}`);
 }
 
-function combineLTUpgrades() {
-}
+
 
 $(function() {
     test();
