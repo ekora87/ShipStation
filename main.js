@@ -14,6 +14,9 @@ let baseDT = {
 
 let hddArray = ['160GB', '320GB', '500GB', '1TB'];
 
+let totalDT = 0;
+let totalLT = 0;
+
 let dt160GB = 0;
 let dt320GB = 0;
 let dt500GB = 0;
@@ -131,6 +134,7 @@ function test() {
           
           event.preventDefault();
           $('.result-div').empty();
+          $('h4').empty();
           let startDate = $('#startDate').val();
           let endDate = $('#endDate').val();
           getOrderByDate(startDate, endDate);
@@ -155,12 +159,12 @@ function getProducts(responseJson) {
             let SKUs = order.items[y].sku;
             //console.log(order);
             if (SKUs.includes(desktops)) {
-              
+                totalDT = totalDT + qty;
               //$('.options').append(`<h3>${order.orderNumber}</h3><p>${SKUs}</p><p>${qty}</p>`);
               displayDTOptions(order.items[y].options, qty);
             } else {
               if (SKUs.includes(laptops)) {
-              
+                totalLT = totalLT + qty;
                // $('.options').append(`<h3>${order.orderNumber}</h3><p>${SKUs}</p>`);
                 displayLTOptions(order.items[y].options, qty);
             }
@@ -386,9 +390,10 @@ function displayLTOptions(item, count) {
 
 function addResults() {
   //$('.results').empty();
+  $('.totalDT').append(`Total Desktop Sold: ${totalDT}`);
   $('.dtRAMResults').append(`<p>DT 4GB RAM: ${dt4GB}</p><p>DT 8GB RAM: ${dt8GB}</p><p>DT 16GB RAM: ${dt16GB}</p>`)
-  $('.dtHDDResults').append(`<p>DT HDD 160GB: ${dt160GB}</p><p>DT HDD 320GB: ${dt320GB}</p><p>DT HDD 500GB: ${dt500GB}</p><p>DT HDD 1TB: ${dt1TB}</p><p>DT HDD 128GB SSD: ${dt128GB}</p>
-  <p>DT HDD 240GB SSD: ${dt240GB}</p><p>DT HDD 480GB SSD: ${dt480GB}</p>`);
+  $('.dtHDDResults').append(`<p>DT 160GB: ${dt160GB}</p><p>DT 320GB: ${dt320GB}</p><p>DT 500GB: ${dt500GB}</p><p>DT 1TB: ${dt1TB}</p><p>DT 128GB SSD: ${dt128GB}</p>
+  <p>DT 240GB SSD: ${dt240GB}</p><p>DT 480GB SSD: ${dt480GB}</p>`);
   $('.dtDVD').append(`<p>DT DVD None: ${dtDVDNone}</p><p>DT DVD: ${dtDVD}</p><p>DT DVD/RW: ${dtDVDRW}</p>`);
   $('.dtLCD').append(`<p>DT LCD None: ${dtLCDNone}</p><p>DT 17" LCD: ${dtLCD17}</p><p>DT 20" LCD: ${dtLCD20}</p><p>DT 22" LCD: ${dtLCD22}</p>`);
   $('.dtOS').append(`<p>DT Win 7: ${dtW7}</p><p>DT Win 10 Home: ${dtW10H}</p><p>DT Win 10 Pro: ${dtW10P}</p>`);
@@ -397,10 +402,10 @@ function addResults() {
   $('.dtAV').append(`<p>No AV: ${dtAVNone}</p><p>Vipre AV: ${dtVipre}</p><p>Malware: ${dtMWB}</p>`);
 
 
-
+  $('.totalLT').append(`Total Laptop Sold: ${totalLT}`);
   $('.ltRAMResults').append(`<p>LT 4GB RAM: ${lt4GB}</p><p>LT 8GB RAM: ${lt8GB}</p><p>LT 16GB RAM: ${lt16GB}</p>`)
-  $('.ltHDDResults').append(`<p>LT HDD 160GB: ${lt160GB}</p><p>LT HDD 320GB: ${lt320GB}</p><p>LT HDD 500GB: ${lt500GB}</p><p>LT HDD 1TB: ${lt1TB}</p><p>LT HDD 128GB SSD: ${lt128GB}</p>
-  <p>LT HDD 240GB SSD: ${lt240GB}</p><p>LT HDD 480GB SSD: ${lt480GB}</p>`);
+  $('.ltHDDResults').append(`<p>LT 160GB: ${lt160GB}</p><p>LT 320GB: ${lt320GB}</p><p>LT 500GB: ${lt500GB}</p><p>LT 1TB: ${lt1TB}</p><p>LT 128GB SSD: ${lt128GB}</p>
+  <p>LT 240GB SSD: ${lt240GB}</p><p>LT 480GB SSD: ${lt480GB}</p>`);
   $('.ltOS').append(`<p>LT Win 7: ${ltW7}</p><p>LT Win 10 Home: ${ltW10H}</p><p>LT Win 10 Pro: ${ltW10P}</p>`);
   $('.ltBatt').append(`<p>Standard Battery: ${ltBatt}</p><p>New Battery: ${ltBattNew}</p><p>New Extended: ${ltBattExt}</p>`);
   $('.ltDVD').append(`<p>LT DVD None: ${ltDVDNone}</p><p>LT DVD: ${ltDVD}</p><p>LT DVD/RW: ${ltDVDRW}</p>`);

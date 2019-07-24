@@ -13,14 +13,15 @@
 </head>
 <body>
         <section role="region">
-                <h2>Select By Weekly</h2>
-                <h3>Pick A Start Date:</h3>
+                <h2>Upgrade Option Sets Reports</h2>
+                <p>The total counts will keep increment per "SUBMIT". If you want a new count for a specific date or week, please refresh the page. </p>
+                <h3>Pick A Start Date: (Weekly)</h3>
                 <form class="date-form" role="form" aria-label="date input">
                 <div class="date-box">
                     <input type="text" id="startDate" class="tbdate" placeholder="YYYY-MM-DD"/>
                 </div>
 
-                <h3>Pick An End Date:</h3>
+                <h3>Pick An End Date: (Weekly)</h3>
                 <form class="date-form" role="form" aria-label="date input">
                 <div class="date-box">
                     <input type="text" id="endDate" class="tbdate" placeholder="YYYY-MM-DD"/>
@@ -31,6 +32,8 @@
             </form>
             </section>
     <section class="results dt-results">
+        <h4 class="totalDT"></h4>
+        <div class="result-container">
         <div class="result-div dtHDDResults"></div>
         <div class="result-div dtRAMResults"></div>
         <div class="result-div dtOS"></div>
@@ -39,11 +42,13 @@
         <div class="result-div dtKB"></div>
         <div class="result-div dtWifi"></div>
         <div class="result-div dtAV"></div>
-
+        </div>
 
 
     </section>
     <section class="results lt-results">
+        <h4 class="totalLT"></h4>
+        <div class="result-container">
         <div class="result-div ltHDDResults"></div>
         <div class="result-div ltRAMResults"></div>
         <div class="result-div ltOS"></div>
@@ -53,6 +58,7 @@
         <div class="result-div ltBT"></div>
         <div class="result-div ltAV"></div>
         <div class="result-div ltDock"></div>
+        </div>
     </section>
     <div class="products">
         <div class="options"></div>

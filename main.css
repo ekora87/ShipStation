@@ -2,13 +2,14 @@ body {
     margin: 0 auto;
     text-align: center;
 }
-.dt-results, .lt-results {
-    border-bottom: 1px solid black;
+.result-container {
+    border: 1px solid black;
     display: flex;
     flex-direction: row;
+    margin-bottom: 10px;
 }
 
-.results > div {
+.result-div {
     padding: 10px;
     width: 200px;
     border-right: 1px dotted black;
