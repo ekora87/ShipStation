@@ -258,7 +258,7 @@ function displayDTOptions(item, count) {
     if (item[i].value === 'Logitech Wireless KB & Mouse ($22)') {
       dtKBWireless = dtKBWireless + count;
     }
-    if (((item[i].value === 'None') && (item[i].name === "Add Wireless")) || ((item[i].value === 'None') && (item[i].name === "Add Wireless?"))) {
+    if ((item[i].value === 'None') && (item[i].name === "Add Wireless" || item[i].name === 'Add Wireless?' || item[i].name === "WiFi? Bluetooth?")) {
       dtWifiNone = dtWifiNone + count;
     }
     if (item[i].value === 'WiFi') {
