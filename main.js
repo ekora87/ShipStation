@@ -63,7 +63,9 @@ let lt500GB = 0;
 let lt1TB = 0;
 let lt128GB = 0;
 let lt240GB = 0;
+let lt256GB = 0
 let lt480GB = 0;
+let lt512GB = 0;
 
 let lt4GB = 0;
 let lt8GB = 0;
@@ -244,7 +246,7 @@ function displayDTOptions(item, count) {
     if (item[i].value === 'Win 10 Pro (add $50)') {
       dtW10P = dtW10P + count;
     }
-    if ((item[i].value === 'None') && (item[i].name === "Add KB & Mouse")) {
+    if (((item[i].value === 'None') && (item[i].name === "Add KB & Mouse")) || ((item[i].value === 'None') && (item[i].name === "Add Keyboard & Mouse"))) {
       dtKBNone = dtKBNone + count;
     }
     if (item[i].value === 'Refurb Dell Mouse & Keyboard ($12)') {
@@ -256,7 +258,7 @@ function displayDTOptions(item, count) {
     if (item[i].value === 'Logitech Wireless KB & Mouse ($22)') {
       dtKBWireless = dtKBWireless + count;
     }
-    if ((item[i].value === 'None') && (item[i].name === "Add Wireless")) {
+    if (((item[i].value === 'None') && (item[i].name === "Add Wireless")) || ((item[i].value === 'None') && (item[i].name === "Add Wireless?"))) {
       dtWifiNone = dtWifiNone + count;
     }
     if (item[i].value === 'WiFi') {
@@ -268,7 +270,7 @@ function displayDTOptions(item, count) {
     if (item[i].value === 'WiFi & Bluetooth') {
       dtWifiBT = dtWifiBT + count;
     }
-    if ((item[i].value === 'Leave Me Unprotected') && (item[i].name === "Add Antivirus")) {
+    if (item[i].value === 'Leave Me Unprotected') {
       dtAVNone = dtAVNone + count;
     }
     if (item[i].value === 'Vipre Antivirus 1PC / 1 Year ($19)') {
@@ -301,16 +303,15 @@ function displayLTOptions(item, count) {
     if (item[i].value === '1TB') {
       lt1TB = lt1TB + count;
     }
-    if (item[i].value === '128GB SSD') {
+    if ((item[i].value === '128GB SSD') || (item[i].value === '128GB')) {
       lt128GB = lt128GB + count;
     }
-    if (item[i].value === '240GB SSD') {
+    if ((item[i].value === '240GB SSD') || (item[i].value === '256GB')){
       lt240GB = lt240GB + count;
     }
-    if (item[i].value === '480GB SSD') {
+    if ((item[i].value === '480GB SSD') || (item[i].value === '512GB')){
       lt480GB = lt480GB + count;
     }
-
     if (item[i].value === '4GB') {
       lt4GB = lt4GB + count;
     }
@@ -320,13 +321,13 @@ function displayLTOptions(item, count) {
     if (item[i].value === '16GB') {
       lt16GB = lt16GB + count;
     }
-    if (item[i].value === 'Win 7') {
+    if ((item[i].value === 'Win 7') || (item[i].value === 'Windows 7')) {
       ltW7 = ltW7 + count;
     }
-    if (item[i].value === 'Win 10 Home (add $25)') {
+    if ((item[i].value === 'Win 10 Home (add $25)') || (item[i].value === 'Windows 10 Home')) {
       ltW10H = ltW10H + count;
     }
-    if (item[i].value === 'Win 10 Pro (add $50)') {
+    if ((item[i].value === 'Win 10 Pro (add $50)') || (item[i].value === 'Windows 10 Pro')){
       ltW10P = ltW10P + count;
     }
     if ((item[i].value === 'None') && (item[i].name === "Add An Optical Drive")) {
@@ -347,11 +348,11 @@ function displayLTOptions(item, count) {
     if (item[i].value === 'New Extended') {
       ltBattExt = ltBattExt + count;
     }
-    if ((item[i].value === 'No Camera') && (item[i].name === "Webcam")) {
+    if (item[i].value === 'No Camera') {
       ltWebcamNone = ltWebcamNone + count;
     }
     if (item[i].value === 'Built-In Webcam') {
-      ltwebcam = ltWebcam + count;
+      ltWebcam = ltWebcam + count;
     }
     if ((item[i].value === 'None') && (item[i].name === "Add Bluetooth")) {
       ltBTNone = ltBTNone + count;
@@ -359,7 +360,7 @@ function displayLTOptions(item, count) {
     if (item[i].value === 'Bluetooth 4.0') {
       ltBT = ltBT + count;
     }
-    if ((item[i].value === 'Leave Me Unprotected') && (item[i].name === "Add Antivirus")) {
+    if (item[i].value === 'Leave Me Unprotected') {
       ltAVNone = ltAVNone + count;
     }
     if (item[i].value === 'Vipre Antivirus 1PC / 1 Year ($19)') {
