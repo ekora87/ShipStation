@@ -1,0 +1,12 @@
+.dt-results, .lt-results {
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: row;
+}
+
+.results > div {
+    padding: 0 10px;
+    width: 175px;
+    border-right: 1px dotted black;
+}
+
